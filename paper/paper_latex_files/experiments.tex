@@ -1,0 +1,24 @@
+
+\section{Experiments}
+\label{sec:expts}
+
+\subsection{Training Strategy \& Technique}
+Both datasets were split using the 80-20 train/test split. Then we ran a 5-fold cross-validation on the training set only. We tuned the hyperparameters of the model with GridSearchCV. The hyperparameters we tuned were alpha for Ridge and Lasso models, the penalty, alpha, and l1-ratio for SGD models, and the degree and alpha for PolyRidge models. The hyperparameters that maximized CV R-squared were selected. This approach provides a low leakage estimate of generalization and guards against arbitrary hyperparameter selection. After selecting the best model using cross-validation, we refit it on the entire training set and evaluated it on the untouched test set, reporting R-squared and RMSE for an unbiased comparison with USGS baselines.
+
+\subsection{Model 1: SGDRegressor}
+Initially, we picked SGDRegressor as our first linear model to test. It uses the strategy of stochastic gradient descent to take each sample one at a time when measuring the gradient of loss. We set up using the L2 penalty by default to start with a maximum iteration of 1000.
+
+\subsection{Model 2: Ridge}
+We then switched from stochastic to batch-based models. This is because we wanted to see if the use of a batch-based model could produce a smoother convergence with a more accurate gradient. We first used ridge regression to serve as a direct comparison with stochastic gradient descent.
+
+\subsection{Model 3: LASSO}
+The purpose of trying LASSO was to test the change when switching from the L2 to the L1 penalty. We expect the model to generate coefficients that reflect the relevance of different parameters.
+
+\subsection{Model 4: Polynomial Ridge}
+We decided to move on from a linear regression model to a polynomial model because we wanted to explore what the performance would be if trained with higher-degree features. We used \texttt{PolynomialFeatures} from the \texttt{sklearn.preprocessing} to achieve it.
+
+\subsection{Statistical Analysis}
+We used the Python package \href{https://www.statsmodels.org/stable/index.html}{\texttt{statsmodels}} to help us assess the quality of our model. We did R-squared and p-value analysis to measure the fitness and accuracy of each coefficient of hyperparameters across different models.
+
+\subsection{Differential Analysis}
+We performed a differential analysis to sort out the top ten outliers with the greatest divergence between the predicted and actual values in our final coding files. We achieved this by pooling the predicted and actual values, calculating their differences, and sorting the absolute values in descending order. Eventually, we were able to generate a table of the top 10 outliers with their hyperparameter values.

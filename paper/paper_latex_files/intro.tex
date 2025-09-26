@@ -1,0 +1,24 @@
+
+% The \section{} command formats and sets the title of this
+% section. We'll deal with labels later.
+\section{Introduction}
+\label{sec:intro}
+
+\textit{Escherichia coli} is a common bacterium. While commensal strains are generally harmless, elevated \textit{E. coli} in natural waters is a public health concern and often indicates other microbial hazards. Therefore, it is important to understand and monitor \textit{E. coli} concentrations to assess the water quality better.\\
+Developing a fast and efficient quantification of \textit{E. coli} concentration has been a crucial goal when monitoring water quality for water bodies. Previous studies have developed successful machine learning models using RGB imagery to predict \textit{E. coli} concentration \cite{Hong}. It gave us the insight that using certain parameters as simple as color components could predict the \textit{E. coli} concentration.\\
+In this study, we used the \href{https://www.sciencebase.gov/catalog/item/6100b22dd34ef8d7055d02ee}{Sciencebase dataset} that focuses on water quality data at recreational sites in Ohio and Pennsylvania as part of the Great Lakes. The dataset contains categories such as turbidity, humidity, temperature, etc. to correlate corresponding \textit{E. coli} concentrations in two water bodies: Beach 6 and Huntington.\\
+We primarily evaluate regularized linear models, adding a degree-2 polynomial variant to capture interactions where warranted. The models are to predict the \textit{E. coli} concentration using given parameters related to water quality and environmental status.\\
+In the remainder of the paper, we introduce the background information of the data contained in our datasets, our experimental design using \href{https://scikit-learn.org/stable}{scikit-learn} packages and regression models, and our results regarding the accuracy of models. Eventually, we will also discuss the broader impact of this project and our reflections. 
+
+% Citations: As you can see above, you create a citation by using the
+% \cite{} command. Inside the braces, you provide a "key" that is
+% unique to the paper/book/resource you are citing. How do you
+% associate a key with a specific paper? You do so in a separate bib
+% file --- for this document, the bib file is called
+% project1.bib. Open that file to continue reading...
+
+% Note that merely hitting the "return" key will not start a new line
+% in LaTeX. To break a line, you need to end it with \\. To begin a 
+% new paragraph, end a line with \\, leave a blank
+% line, and then start the next line (like in this example).
+
